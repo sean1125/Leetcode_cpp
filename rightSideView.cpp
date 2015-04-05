@@ -37,7 +37,7 @@ public:
             Q.pop();
             remain--;
             
-            if(remain == 0) {
+            if (remain == 0) {
                 remain = counter;
                 counter = 0;
                 result.push_back(tmp->val);
