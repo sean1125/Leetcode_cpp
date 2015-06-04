@@ -15,8 +15,7 @@ class Solution {
 public:
     TreeNode* upsideDownBinaryTree(TreeNode* root) {
 
-        if (!root) return NULL;
-        if (!root->left) return root;
+        if (!root || !root->left) return root;
 
         TreeNode * newRoot = upsideDownBinaryTree(root->left);
 
