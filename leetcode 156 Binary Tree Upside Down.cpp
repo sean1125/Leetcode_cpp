@@ -10,6 +10,25 @@
  * };
  */
 
+// recursive
+class Solution {
+public:
+    TreeNode* upsideDownBinaryTree(TreeNode* root) {
+
+        if (!root) return NULL;
+        if (!root->left) return root;
+
+        TreeNode * newRoot = upsideDownBinaryTree(root->left);
+
+        root->left->left = root->right;
+        root->left->right = root;
+        root->left = NULL;
+        root->right = NULL;
+
+        return newRoot;
+    }
+};
+
 // non-recursive
 class Solution {
 public:
@@ -44,24 +63,5 @@ public:
         }
 
         return root;
-    }
-};
-
-// recursive
-class Solution {
-public:
-    TreeNode* upsideDownBinaryTree(TreeNode* root) {
-
-        if (!root) return NULL;
-        if (!root->left) return root;
-
-        TreeNode * newRoot = upsideDownBinaryTree(root->left);
-
-        root->left->left = root->right;
-        root->left->right = root;
-        root->left = NULL;
-        root->right = NULL;
-
-        return newRoot;
     }
 };
