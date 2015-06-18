@@ -13,6 +13,7 @@ public:
     }
 
     int area(int A, int B, int C, int D) {
+
         return (D - B) * (C - A);
     }
 
