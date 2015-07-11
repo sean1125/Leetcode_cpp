@@ -1,5 +1,3 @@
-// leetcode 235 Lowest Common Ancestor of a Binary Search Tree.cpp
-
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -20,16 +18,16 @@ public:
         if (p->val == root->val) return root;
         if (q->val == root->val) return root;
     }
-    
+
     TreeNode * findRoot(TreeNode * p, TreeNode * q) {
-        
+
         TreeNode * tmp = p;
         
         while (tmp && tmp->val == q->val) {
             if (tmp == q) return p;
             tmp = tmp->right;
         }
-        
+
         return q;
     }
 
