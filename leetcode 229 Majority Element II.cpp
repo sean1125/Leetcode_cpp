@@ -5,7 +5,7 @@ public:
     vector<int> majorityElement(vector<int>& nums) {
 
         int num0 = -1, num1 = -1;
-        int counter0 = 0, counter1= 0;
+        int counter0 = 0, counter1 = 0;
         int i, size = nums.size();
         vector<int> result;
 
