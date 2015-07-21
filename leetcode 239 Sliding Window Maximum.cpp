@@ -1,5 +1,7 @@
 // leetcode 239 Sliding Window Maximum.cpp
 
+// This is NOT the optimal solution, time complexity is O[n log(k)].
+
 class Solution {
 public:
     vector<int> maxSlidingWindow(vector<int>& nums, int k) {
