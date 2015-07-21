@@ -9,7 +9,7 @@ private:
 
     int capacity, counter;
     list<Node *> l;
-    map<int, list<Node *>::iterator> m;
+    unordered_map<int, list<Node *>::iterator> m;
 
     void moveToHead (int key) {
 
