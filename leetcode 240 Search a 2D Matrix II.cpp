@@ -4,6 +4,25 @@
 
 class Solution {
 public:
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {
+
+        if (matrix.empty()) return false;
+
+        int y = matrix.size(), i = 0, j = matrix[0].size() - 1;
+
+        while (i < y && j >= 0) {
+            if (matrix[i][j] == target) return true;
+            matrix[i][j] < target ? i++ : j--;
+        }
+
+        return false;
+    }
+};
+
+// solution 2
+
+class Solution {
+public:
     bool searchMatrix(vector<vector<int> > & m, int t, int ys, int ye, int xs, int xe) {
 
         if (ys > ye || xs > xe || t < m[ys][xs] || t > m[ye][xe]) return false;
@@ -22,7 +41,7 @@ public:
     }
 };
 
-// solution 2
+// solution 3
 
 class Solution {
 public:
