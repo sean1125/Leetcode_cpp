@@ -8,11 +8,12 @@ public:
 
         if (matrix.empty()) return false;
 
-        int y = matrix.size(), i = 0, j = matrix[0].size() - 1;
+        int y = matrix.size(), i = 0, j = matrix[0].size() - 1, tmp;
 
         while (i < y && j >= 0) {
-            if (matrix[i][j] == target) return true;
-            matrix[i][j] < target ? i++ : j--;
+            tmp = matrix[i][j];
+            if (tmp == target) return true;
+            tmp < target ? i++ : j--;
         }
 
         return false;
