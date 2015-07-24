@@ -1,19 +1,21 @@
 // leetcode 219 Contains Duplicate II.cpp
 
-public class Solution {
-    public boolean containsNearbyDuplicate(int[] nums, int k) {
+class Solution {
+public:
+    bool containsNearbyDuplicate(vector<int>& nums, int k) {
 
-        int i, size = nums.length;
-        Set<Integer> s = new HashSet<Integer>();
+        int i, size = nums.size();
+        unordered_map<int, int> m;
 
         for (i = 0; i < size; i++) {
-            if (i - k > 0) s.remove(nums[i - k - 1]);
-
-            if (s.contains(nums[i])) return true;
-
-            s.add(nums[i]);
+            if (m.find(nums[i]) != m.end()) {
+                if (i - m[nums[i]] <= k) return true;
+                else m[nums[i]] = i;
+            } else {
+                m[nums[i]] = i;
+            }
         }
 
         return false;
     }
-}
+};
