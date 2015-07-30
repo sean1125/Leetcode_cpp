@@ -1,5 +1,34 @@
 // leetcode 215 Kth Largest Element in an Array.cpp
 
+// solution 1, time complexity n
+
+class Solution {
+public:
+    int findKthLargest(vector<int> & nums, int k, int start, int end) {
+
+        int i = start - 1, j, tmp;
+
+        for (j =start; j <= end; j++) {
+            if (nums[j] <= nums[end]) {
+                tmp = nums[++i];
+                nums[i] =nums[j];
+                nums[j] = tmp;
+            }
+        }
+
+        if (end - i > k - 1) return findKthLargest(nums, k, i + 1, end);
+        else if (end - i < k - 1) return findKthLargest(nums, k - end + i - 1, start, i - 1);
+        else return nums[i];
+    }
+
+    int findKthLargest(vector<int>& nums, int k) {
+
+        return findKthLargest(nums, k, 0, nums.size() - 1);
+    }
+};
+
+// solution 2, time complexity k log(n) + n
+
 class Solution {
 public:
     int heapSize;
