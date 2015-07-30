@@ -10,7 +10,7 @@ public:
         int tmp = a;
         a = b;
         b = tmp;
-        
+
         return;
     }
 
@@ -29,22 +29,13 @@ public:
         return;
     }
 
-    void build(vector<int> & nums) {
-
-        int i, size = nums.size();
-
-        for (i = size / 2 - 1; i >= 0; i--) maintain(nums, i);
-
-        return;
-    }
-
     int findKthLargest(vector<int>& nums, int k) {
 
         int i, size = nums.size();
 
         heapSize = size;
 
-        build(nums);
+        for (i = size / 2 - 1; i >= 0; i--) maintain(nums, i);
 
         for (i = 0; i < k; i++) {
             swap(nums[0], nums[size - i - 1]);
