@@ -1,6 +1,6 @@
 // leetcode 215 Kth Largest Element in an Array.cpp
 
-// solution 1, time complexity n
+// solution 1, time complexity O(n)
 
 class Solution {
 public:
@@ -27,7 +27,7 @@ public:
     }
 };
 
-// solution 2, time complexity k log(n) + n
+// solution 2, time complexity O[k log(n) + n]
 
 class Solution {
 public:
