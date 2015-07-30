@@ -2,7 +2,6 @@
 
 class Solution {
 public:
-
     int heapSize;
 
     void swap(int & a, int & b) {
