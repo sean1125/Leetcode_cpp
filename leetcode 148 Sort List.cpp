@@ -10,53 +10,56 @@
  */
 class Solution {
 public:
-    ListNode * merge(ListNode * head1, ListNode * head2) {
-        ListNode * head, * run1 = head1, * run2 = head2, * run;
-
-        if (head1->val < head2->val) {
-            head = head1;
-            run1 = run1->next;
-        } else {
-            head = head2;
-            run2 = run2->next;
-        }
-        run = head;
-
-        while (run1 && run2) {
-            if (run1->val < run2->val) {
-                run->next = run1;
-                run = run->next;
-                run1 = run1->next;
-            } else {
-                run->next = run2;
-                run = run->next;
-                run2 = run2->next;
-            }
-        }
-
-        if (run1) run->next = run1;
-        else run->next = run2;
-
-        return head;
+    ListNode * merge(ListNode * l1, ListNode * l2) {
+    	
+    	ListNode * guard = new ListNode(-1), * run = guard;
+    
+    	while (l1 && l2) {
+    		if (l1->val < l2->val) {
+    			run->next = l1;
+    			l1 = l1->next;
+    		} else {
+    			run->next = l2;
+    			l2 = l2->next;
+    		}
+    
+    		run = run->next;
+    	}
+    
+    	if (l1) run->next = l1;
+    	if (l2) run->next = l2;
+    
+    	run = guard->next;
+    
+    	delete guard;
+    
+    	return run;
     }
-
-    ListNode* sortList(ListNode* head) {
-        if (!head) return NULL;
-        if (!head->next) return head;
-
-        ListNode * faster = head, * slower = head, * prev;
-
-        while (faster && faster->next) {
-            prev = slower;
-            slower = slower->next;
-            faster = faster->next->next;
-        }
-
-        prev->next = NULL;
-        ListNode * head1 = sortList(head);
-        ListNode * head2 = sortList(slower);
-        head = merge(head1, head2);
-
-        return head;
+    
+    ListNode * sort(ListNode * & head, int length) {
+    
+    	if (length == 1) {
+    		ListNode * tmp = head;
+    		head = head->next;
+    		tmp->next = NULL;
+    		return tmp;
+    	}
+    
+    	ListNode * left = sort(head, length / 2);
+    	ListNode * right = sort(head, length - length / 2);
+    
+    	return merge(left, right);
+    }
+    
+    ListNode * sortList(ListNode * head) {
+    
+    	if (!head) return NULL;
+    
+    	int length = 0;
+    	ListNode * run;
+    
+    	for (run = head; run; run = run->next) length++;
+    
+    	return sort(head, length);
     }
 };
