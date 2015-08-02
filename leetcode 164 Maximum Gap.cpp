@@ -29,7 +29,7 @@ public:
 
         for (i = 0; i < size; i++) max = max > nums[i] ? max : nums[i];
 
-        for (m = 1; m <= max && m <= 1000000000; m *= 10) countingSort(nums, m);
+        for (m = 1; m <= max; m *= 10) countingSort(nums, m);
 
         return;
     }
