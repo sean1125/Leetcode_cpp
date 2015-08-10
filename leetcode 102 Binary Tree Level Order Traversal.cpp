@@ -14,7 +14,6 @@ public:
     vector<vector<int>> levelOrder(TreeNode* root) {
 
         queue<TreeNode *> q;
-
         vector<int> array;
         vector<vector<int> > result;
         TreeNode * tmp;
