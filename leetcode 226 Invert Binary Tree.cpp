@@ -9,6 +9,9 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
+ 
+ // iteration
+ 
 class Solution {
 public:
     TreeNode* invertTree(TreeNode* root) {
@@ -31,6 +34,28 @@ public:
             if (curr->left) s.push(curr->left);
             if (curr->right) s.push(curr->right);
         }
+
+        return root;
+    }
+};
+
+
+// recursive
+
+class Solution {
+public:
+    TreeNode* invertTree(TreeNode* root) {
+
+        if (!root) return NULL;
+
+        TreeNode * tmp;
+
+        tmp = root->left;
+        root->left = root->right;
+        root->right = tmp;
+
+        invertTree(root->left);
+        invertTree(root->right);
 
         return root;
     }
