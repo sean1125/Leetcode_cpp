@@ -9,19 +9,13 @@
  */
 class Solution {
 public:
-    TreeNode * LCA (TreeNode * root, TreeNode * p, TreeNode * q) {
-
-        if (p->val < root->val && root->val < q->val) return root;
-        if (p->val > root->val) return LCA(root->right, p, q);
-        if (root->val > q->val) return LCA(root->left, p, q);
-        if (p->val == root->val || q->val == root->val) return root;
-    }
-
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
 
         if (!root || !p || !q) return NULL;
 
-        if (p->val < q->val) return LCA(root, p, q);
-        else  return LCA(root, q, p);
+        if (p->val < root->val && q->val < root->val) return lowestCommonAncestor(root->left, p, q);
+        if (p->val > root->val && q->val > root->val) return lowestCommonAncestor(root->right, p, q);
+
+        return root;
     }
 };
