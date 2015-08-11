@@ -1,7 +1,7 @@
-// leetcode 199 Binary Tree Right Side View
+// leetcode 199 Binary Tree Right Side View.cpp
 
 /**
- * Definition for binary tree
+ * Definition for a binary tree node.
  * struct TreeNode {
  *     int val;
  *     TreeNode *left;
@@ -11,38 +11,29 @@
  */
 class Solution {
 public:
-    vector<int> rightSideView(TreeNode *root) {
+    vector<int> rightSideView(TreeNode* root) {
+
         vector<int> result;
-        
-        if (root == NULL) return result;
-            
-        int counter = 0, remain = 1;
-        queue<TreeNode *> Q;
-        Q.push(root);
         TreeNode * tmp;
-        
-        while (!Q.empty()) {
-            tmp = Q.front();
-            
-            if (tmp->left) {
-                Q.push(tmp->left);
-                counter++;
-            }
-            if (tmp->right) {
-                Q.push(tmp->right);
-                counter++;
-            }
-            
-            Q.pop();
-            remain--;
-            
-            if(remain == 0) {
-                remain = counter;
-                counter = 0;
+        queue<TreeNode *> q;
+        int counter = 1;
+
+        if (root) q.push(root);
+
+        while (!q.empty()) {
+            tmp = q.front();
+            q.pop();
+            counter--;
+
+            if (tmp->left) q.push(tmp->left);
+            if (tmp->right) q.push(tmp->right);
+
+            if (!counter) {
                 result.push_back(tmp->val);
+                counter = q.size();
             }
         }
-        
+
         return result;
     }
 };
