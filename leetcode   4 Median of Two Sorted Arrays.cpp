@@ -1,4 +1,4 @@
-// leetcode  4 Median of Two Sorted Arrays.cpp
+// leetcode   4 Median of Two Sorted Arrays.cpp
 
 class Solution {
 public:
